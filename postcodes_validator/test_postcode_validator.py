@@ -1,4 +1,5 @@
 import pytest
+
 from main import validate_uk_postcode, format_uk_postcode
 
 validate_test_cases = [

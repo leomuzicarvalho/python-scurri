@@ -1,6 +1,9 @@
 # Python Scurri
 
-Simple three-five sequence generator with type hints.
+A Python project containing two main utilities:
+
+1. Three-Five sequence generator with type hints
+2. UK postcode validator and formatter
 
 ## Setup
 
@@ -10,26 +13,64 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Usage
+## Three-Five Sequence Generator
+
+Generates sequences where multiples of 3 are replaced with "Three", multiples of 5 with "Five", and multiples of both with "ThreeFive".
+
+### Usage
 
 ```python
-from scurri import three_five_sequence, print_three_five
+from three_five.main import three_five_sequence
 
 # Get sequence as list
 result = three_five_sequence(1, 15)
-
-# Print sequence
-print_three_five(1, 20)
+# Returns: [1, 2, 'Three', 4, 'Five', 'Three', 7, 8, 'Three', 'Five', 11, 'Three', 13, 14, 'ThreeFive']
 ```
 
-## Test
+## UK Postcode Validator
 
-```bash
-pytest test_scurri.py
+Validates and formats UK postcodes according to official standards.
+
+### Usage
+
+```python
+from postcodes_validator.main import validate_uk_postcode, format_uk_postcode
+
+# Validate a postcode
+is_valid = validate_uk_postcode("SW1A 1AA")  # Returns: True
+is_valid = validate_uk_postcode("INVALID")   # Returns: False
+
+# Format a postcode
+formatted = format_uk_postcode("SW1A1AA")    # Returns: "SW1A 1AA"
+formatted = format_uk_postcode("sw1a 1aa")   # Returns: "SW1A 1AA"
+formatted = format_uk_postcode("INVALID")    # Returns: None
 ```
 
-## Type Check
+### Features
+
+- Validates UK postcode format (A[A]N[A/N] NAA)
+- Handles various input formats (with/without spaces, hyphens, case)
+- Applies official UK postcode validation rules
+- Formats postcodes to standard format with proper spacing
+
+## Testing
+
+### Run All Tests (Recommended)
 
 ```bash
-mypy scurri.py test_scurri.py
+python run_tests.py
+```
+
+### Run Tests Individually
+
+Run tests from each individual directory:
+
+```bash
+# Test three-five sequence generator
+cd three-five
+pytest
+
+# Test postcode validator
+cd ../postcodes-validator
+pytest
 ```

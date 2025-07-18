@@ -16,11 +16,7 @@ def three_five_sequence(start: int = 1, end: int = 100) -> List[Union[int, str]]
     return result
 
 
-def print_three_five(start: int = 1, end: int = 100) -> None:
-    """Print three-five sequence."""
-    for item in three_five_sequence(start, end):
-        print(item)
-
-
 if __name__ == "__main__":
-    print_three_five() 
+    result = three_five_sequence()
+    for item in result:
+        print(item) 
